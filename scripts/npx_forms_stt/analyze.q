@@ -4,11 +4,11 @@ system"l ",pwd,"/lib.q";
 system"l /home/bogdan/q/my.q";
 system"l /home/bogdan/q/lib/piv.q";
 
-parsed_npx_paths:system"ls ",pwd,"/../../data/npx_forms_parsed/*";
+data_dir:pwd,"/../../data/";
+parsed_npx_paths:system"ls ",data_dir,"/npx_forms_parsed/STATE_STREET_MASTER_FUNDS/*/State_Street_Equity_500_Index_Portfolio";
 parsed_npx_paths:{x where not x like"*.csv"}parsed_npx_paths;
 ps:get each hsym`$parsed_npx_paths;
-ps:ps@\:`$"State Street Equity 500 Index Portfolio";
-tokens:@[;1]each reverse each"-"vs/:parsed_npx_paths;
+tokens:{@[;1]reverse"-"vs @[;1]reverse"/"vs x}each parsed_npx_paths
 ps:{y;update VoteId:(`$string[VoteId],\:"_",y) from x}'[ps;tokens];
 ps:raze ps;
 

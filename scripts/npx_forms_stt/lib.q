@@ -8,12 +8,13 @@ download_and_save_from_url:{[save_path;url]
   :save_path_full;
   }
 
-save_parsed_portfolios:{[save_path;save_path_unparsed;portfolio]
-  save_path_full:save_path,"/","."sv -1_"."vs first system"basename ",save_path_unparsed;
+save_parsed_portfolios:{[save_path;save_path_unparsed;company;portfolio]
+  save_path_full:save_path,"/",ssr[string[company];" ";"_"],"/","."sv -1_"."vs first system"basename ",save_path_unparsed;
+  save_paths:(save_path_full,"/"),/:ssr[;" ";"_"]each string key portfolio;
   -1"Saving at: ",save_path_full;
-  hsym[`$save_path_full] set portfolio;
-  save_path_full_csv:save_path_full,".csv";
-  hsym[`$save_path_full_csv] 0: csv 0: string portfolio`$"State Street Equity 500 Index Portfolio";
+  hsym[`$save_paths] set' value portfolio;
+  save_paths_csv:save_paths,\:".csv";
+  hsym[`$save_paths_csv] 0:'csv 0:/:string value portfolio;
   }
 
 first_line_contains:{[token;text]
@@ -23,7 +24,9 @@ first_line_contains:{[token;text]
 parse_npx_form_state_street:{[filepath]
   form:read0 hsym`$filepath;
   form:"\n"sv form;
-  raw_portfolios:{x where first_line_contains["State Street";] each x} "\n=====" vs form;
+  raw_portfolios:-1_1_"\n=====" vs form;
+  /drop sections that start with a simple "===...==="
+  raw_portfolios:{x where not {enlist["="]~distinct first"\n"vs x}each x}raw_portfolios;
   portfolios:parse_portfolio each raw_portfolios;
   portfolio_names:`${trim first{x except enlist""}"="vs first"\n"vs x}each raw_portfolios;
   :portfolio_names!portfolios;
@@ -38,9 +41,15 @@ parse_dates:{[date_str]
   }
 
 check_if_portfolio_is_empty:{[raw_portfolio]
+  is_empty:0=count raze 1_"\n" vs raw_portfolio;
+  if[is_empty;:1b];
   hint_text:"There is no proxy voting activity for the";
   is_empty:1<>count hint_text vs raw_portfolio;
-  :is_empty;
+  if[is_empty;:1b];
+  hint_text:"did not hold any votable positions";
+  is_empty:1<>count hint_text vs raw_portfolio;
+  if[is_empty;:1b];
+  :0b;
   }
 
 add_root_vote_num:{[votes]
