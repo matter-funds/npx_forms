@@ -1,0 +1,4 @@
+data/ProxyMonitor.csv
+data/npx_forms/*
+data/npx_forms_parsed/*
+scripts/do.q
