@@ -1,0 +1,9 @@
+year,company,url
+2018,iShares Trust,https://www.sec.gov/Archives/edgar/data/1100663/000119312518263504/0001193125-18-263504.txt
+2017,iShares Trust,https://www.sec.gov/Archives/edgar/data/1100663/000119312517268679/0001193125-17-268679.txt
+2016,iShares Trust,https://www.sec.gov/Archives/edgar/data/1100663/000119312516693665/0001193125-16-693665.txt
+2015,iShares Trust,https://www.sec.gov/Archives/edgar/data/1100663/000119312515301925/0001193125-15-301925.txt
+2014,iShares Trust,https://www.sec.gov/Archives/edgar/data/1100663/000119312514323169/0001193125-14-323169.txt
+2013,iShares Trust,https://www.sec.gov/Archives/edgar/data/1100663/000119312513350187/0001193125-13-350187.txt
+2012,iShares Trust,https://www.sec.gov/Archives/edgar/data/1100663/000119312513225788/0001193125-13-225788.txt
+2011,iShares Trust,https://www.sec.gov/Archives/edgar/data/1100663/000119312511232702/0001193125-11-232702.txt

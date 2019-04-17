@@ -70,6 +70,7 @@ add_root_vote_num:{[votes]
 parse_portfolio:{[raw_portfolio]
   -1"Doing portfolio: ",trim first{x except enlist""}"="vs first"\n"vs raw_portfolio;
   if[check_if_portfolio_is_empty raw_portfolio;:()];
+  raw_portfolio:ssr[;"&amp;";"&"]raw_portfolio;
   raw_companies:{x except enlist""} "-----------------" vs raw_portfolio;
   raw_companies:"\n"vs/:raw_companies;
   raw_companies[0]:1_ raw_companies[0];
