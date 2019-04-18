@@ -1,7 +1,10 @@
 # npx_forms
 Read and parse N-PX forms from the edgar website
 
-Currently only supporting State Street N-PX scripts.
+Currently supporting N-PX scripts for the following funds:
+1. State Street
+1. Vanguard
+1. Blackrock
 
 To run:
 1. Place all your target URLs under `data/npx_forms_paths`
