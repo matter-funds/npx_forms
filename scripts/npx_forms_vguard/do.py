@@ -3,10 +3,11 @@ from bs4 import BeautifulSoup
 import re
 import requests
 import parse
+import os
 
-#TODO: avoid absolute paths
-paths_file = '/home/bogdan/projects/proxymonitor/data/npx_forms_paths/vanguard_npx.txt'
-save_path_root = '/home/bogdan/projects/proxymonitor/data/'
+root_path = os.path.dirname(os.path.realpath(__file__))+'/../../'
+paths_file = root_path+'/data/npx_forms_paths/vanguard_npx.txt'
+save_path_root = root_path+'data/'
 urls = pd.read_csv(paths_file)
 
 for u in urls['url']:
