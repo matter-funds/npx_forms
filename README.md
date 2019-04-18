@@ -12,7 +12,7 @@ To run the Python scripts, you need to be an environment where the libraries in 
 You can create a virtual environment for this project by doing:
 
 ```
-cd npx_forms
+cd /path/to/your/npx_forms
 virtualenv env
 source env/bin/activate
 pip install -r scripts/requirements.txt
