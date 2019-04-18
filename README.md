@@ -6,6 +6,18 @@ Currently supporting N-PX scripts for the following funds:
 1. Vanguard
 1. Blackrock
 
+To install:
+All paths used by the scripts are relative.
+To run the Python scripts, you need to be an environment where the libraries in requirements.txt are availabile.
+You can create a virtual environment for this project by doing:
+
+```
+cd npx_forms
+virtualenv env
+source env/bin/activate
+pip install -r scripts/requirements.txt
+```
+
 To run:
 1. Place all your target URLs under `data/npx_forms_paths`
 1. 
